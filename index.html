@@ -7,11 +7,11 @@
   <style>
     html, body { height: 100%; margin: 0; background: #fff; }
 
-    /* Top-left tiny links */
+    /* Top centered link */
     .nav {
-      position: fixed; top: 12px; left: 12px;
+      position: fixed; top: 12px; left: 0; right: 0; z-index: 2;
+      display: flex; justify-content: center;
       font-family: Helvetica, Arial, sans-serif; font-size: 13px;
-      display: flex; gap: 14px; z-index: 2;
     }
     .nav a { color: #000; text-decoration: none; opacity: .85; }
     .nav a:hover { opacity: 1; text-decoration: underline; }
@@ -31,8 +31,7 @@
 </head>
 <body>
   <nav class="nav">
-    <a href="mailto:barendbootsma@gmail.com">Mail</a>
-<a href="./cv/">cv</a>
+    <a href="mailto:barendbootsma@gmail.com">Write me an email :)</a>
   </nav>
 
   <div class="wrap" aria-hidden="true">
@@ -59,7 +58,7 @@
       img.src = slides[i]; // instant switch (no fade)
     }
 
-    const intervalMs = 4000; // 4 seconds
+    const intervalMs = 5000; // 5 seconds
     let timer = setInterval(nextSlide, intervalMs);
 
     img.addEventListener('click', () => {
