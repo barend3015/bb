@@ -5,32 +5,41 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title></title>
   <style>
-    /* Full-page white background + perfect centering */
     html, body { height: 100%; margin: 0; background: #fff; }
-    .wrap { min-height: 100%; display: grid; place-items: center; background: #fff; }
 
-    /* The image itself: constrained so it never fills the whole screen */
+    /* Small "Mail" link, top-left */
+    .mail {
+      position: fixed; top: 12px; left: 12px;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 13px; color: #000; text-decoration: none;
+      opacity: 0.85;
+    }
+    .mail:hover { opacity: 1; text-decoration: underline; }
+
+    /* Center the image on a white page */
+    .wrap { min-height: 100%; display: grid; place-items: center; }
+
+    /* Constrain image size so it doesn't fill the screen */
     #slide {
       display: block;
-      max-width: min(90vw, 1000px);   /* make it smaller than the screen */
-      max-height: min(80vh, 750px);   /* keep some white space around */
-      width: auto;
-      height: auto;
-      object-fit: contain;            /* no cropping */
-      transition: opacity .5s ease;   /* fade animation */
-      opacity: 1;
-      background: #fff;               /* white behind letterboxing */
+      max-width: min(90vw, 1000px);
+      max-height: min(80vh, 750px);
+      width: auto; height: auto;
+      object-fit: contain;   /* no cropping */
+      background: #fff;
+      cursor: pointer;       /* indicates click-to-advance */
     }
-    #slide.hidden { opacity: 0; }
   </style>
 </head>
 <body>
+  <a class="mail" href="mailto:barendbootsma@gmail.com">Mail</a>
+
   <div class="wrap" aria-hidden="true">
     <img id="slide" src="images/1.jpg" alt="">
   </div>
 
   <script>
-    // Use your exact filenames (case-sensitive on GitHub Pages!)
+    // Use your exact filenames (case-sensitive on GitHub Pages)
     const slides = [
       'images/1.jpg',
       'images/2.jpeg',
@@ -39,21 +48,28 @@
       'images/5.JPG'
     ];
 
-    const img = document.getElementById('slide');
-    const delay = 3000; // ms between slides
-
     // Preload to avoid flicker
     slides.forEach(src => { const im = new Image(); im.src = src; });
 
+    const img = document.getElementById('slide');
     let i = 0;
-    setInterval(() => {
-      img.classList.add('hidden');
-      setTimeout(() => {
-        i = (i + 1) % slides.length;
-        img.src = slides[i];
-        img.classList.remove('hidden');
-      }, 250); // fade-out time
-    }, delay);
+
+    function nextSlide() {
+      i = (i + 1) % slides.length;
+      img.src = slides[i]; // instant switch (no fade)
+    }
+
+    // Auto-advance every 4 seconds
+    const intervalMs = 4000;
+    let timer = setInterval(nextSlide, intervalMs);
+
+    // Click to advance
+    img.addEventListener('click', () => {
+      nextSlide();
+      // restart the timer so clicks don't immediately auto-advance again
+      clearInterval(timer);
+      timer = setInterval(nextSlide, intervalMs);
+    });
   </script>
 </body>
 </html>
