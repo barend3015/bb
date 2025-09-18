@@ -5,69 +5,55 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Work Experience — CV</title>
   <style>
-    /* Base */
+    /* Uniform, smaller typography + colors */
     :root{
       --font: Helvetica, Arial, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      --text: #111;
-      --meta: rgba(0,0,0,.55);
-      --accent: #2a8a68; /* role color like in your mock */
+      --size: 13px;          /* smaller, consistent size */
+      --text: #000;          /* default black */
+      --meta: #777;          /* grey for location & date */
+      --accent: #a38800;     /* role color */
       --maxw: 980px;
     }
     html,body{margin:0;background:#fff;color:var(--text);}
-    body{font-family:var(--font);line-height:1.55;}
+    body{font-family:var(--font); font-size:var(--size); line-height:1.55;}
+
+    /* Optional tiny links top-left */
+    .nav{
+      position: fixed; top: 12px; left: 12px; z-index: 2;
+      font: inherit; display:flex; gap:14px;
+    }
+    .nav a{ color: var(--text); text-decoration:none; opacity:.85; }
+    .nav a:hover{ opacity:1; text-decoration:underline; }
 
     /* Page frame */
-    .container{
-      max-width: var(--maxw);
-      margin: 40px auto 80px;
-      padding: 0 28px;
-    }
+    .container{ max-width:var(--maxw); margin:48px auto 80px; padding:0 28px; }
 
-    /* Section title (matches screenshot tone/size) */
-    .section-title{
-      font-size: 18px;
-      font-weight: 700;
-      margin: 8px 0 20px;
-      letter-spacing: .01em;
-    }
+    /* Section title: same size as body, just bold */
+    .section-title{ font-weight:700; margin:8px 0 20px; }
 
-    /* One experience block */
-    .xp{margin: 0 0 28px;}
-    .company{font-weight:700;}
-    .role{
-      display:block;
-      color: var(--accent);
-      font-weight: 600;
-      text-decoration: none;
-      margin-top: 2px;
-    }
-    .meta{
-      color: var(--meta);
-      font-size: 14px;
-      margin: 3px 0 6px;
-    }
+    /* Experience blocks */
+    .xp{ margin:0 0 28px; }
+    .company{ font-weight:700; }         /* black by default */
+    .role{ color:var(--accent); font-weight:600; margin-top:2px; }  /* #a38800 */
+    .meta{ color:var(--meta); margin:3px 0 6px; }                   /* grey */
 
-    /* Arrow bullets like your screenshot */
-    .bullets{list-style:none;margin:6px 0 0 0;padding:0;}
-    .bullets li{
-      position:relative;
-      padding-left:22px;
-      margin:6px 0;
-    }
-    .bullets li::before{
-      content: "↳";
-      position:absolute;left:0;top:0;
-      color: var(--meta);
-    }
+    /* Arrow bullets */
+    .bullets{ list-style:none; margin:6px 0 0 0; padding:0; }
+    .bullets li{ position:relative; padding-left:22px; margin:6px 0; }
+    .bullets li::before{ content:"↳"; position:absolute; left:0; top:0; color:var(--meta); }
 
-    /* Tidy typography on small screens */
     @media (max-width:560px){
-      .container{padding:0 18px;margin-top:28px;}
-      .meta{font-size:13px;}
+      .container{ padding:0 18px; margin-top:36px; }
     }
   </style>
 </head>
 <body>
+  <!-- Optional: keep or remove this tiny nav -->
+  <nav class="nav">
+    <a href="mailto:barendbootsma@gmail.com">Mail</a>
+    <a href="./">home</a>
+  </nav>
+
   <main class="container">
     <h2 class="section-title">Work Experience</h2>
 
@@ -75,27 +61,21 @@
       <div class="company">From the Underground</div>
       <div class="role">Sculpture</div>
       <div class="meta">Rotterdam, NL | 02.2025 - 02.2024</div>
-      <ul class="bullets">
-        <li>Sculpting mycelium statues.</li>
-      </ul>
+      <ul class="bullets"><li>Sculpting mycelium statues.</li></ul>
     </section>
 
     <section class="xp">
       <div class="company">SIGN Living Lab</div>
       <div class="role">Exhibition Designer</div>
       <div class="meta">Rotterdam, NL | 02.2025 - 02.2024</div>
-      <ul class="bullets">
-        <li>Designing the exhibition "Closing Biomaterial Loops", from idea to concept and final production.</li>
-      </ul>
+      <ul class="bullets"><li>Designing the exhibition “Closing Biomaterial Loops”, from idea to concept and final production.</li></ul>
     </section>
 
     <section class="xp">
       <div class="company">De Groene Afslag &amp; Auping</div>
       <div class="role">Product &amp; Interior Designer</div>
       <div class="meta">Rotterdam, NL | 02.2025 - 02.2024</div>
-      <ul class="bullets">
-        <li>Designing an exhibition within a hotel room that proposes waste as an illusion, inviting guests to live together with nature and see it as a collaborator.</li>
-      </ul>
+      <ul class="bullets"><li>Designing an exhibition within a hotel room that proposes waste as an illusion, inviting guests to live together with nature and see it as a collaborator.</li></ul>
     </section>
 
     <section class="xp">
@@ -151,11 +131,8 @@
       <div class="company">Orbie</div>
       <div class="role">Product Developer and Team Leader</div>
       <div class="meta">Amsterdam, NL | 02.2025 - 02.2024</div>
-      <ul class="bullets">
-        <li>Leading a small design team developing innovative wrist protection.</li>
-      </ul>
+      <ul class="bullets"><li>Leading a small design team developing innovative wrist protection.</li></ul>
     </section>
-
   </main>
 </body>
 </html>
