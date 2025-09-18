@@ -7,39 +7,39 @@
   <style>
     html, body { height: 100%; margin: 0; background: #fff; }
 
-    /* Small "Mail" link, top-left */
-    .mail {
+    /* Top-left tiny links */
+    .nav {
       position: fixed; top: 12px; left: 12px;
-      font-family: Helvetica, Arial, sans-serif;
-      font-size: 13px; color: #000; text-decoration: none;
-      opacity: 0.85;
+      font-family: Helvetica, Arial, sans-serif; font-size: 13px;
+      display: flex; gap: 14px; z-index: 2;
     }
-    .mail:hover { opacity: 1; text-decoration: underline; }
+    .nav a { color: #000; text-decoration: none; opacity: .85; }
+    .nav a:hover { opacity: 1; text-decoration: underline; }
 
-    /* Center the image on a white page */
+    /* Centered slideshow */
     .wrap { min-height: 100%; display: grid; place-items: center; }
-
-    /* Constrain image size so it doesn't fill the screen */
     #slide {
       display: block;
       max-width: min(90vw, 1000px);
       max-height: min(80vh, 750px);
       width: auto; height: auto;
-      object-fit: contain;   /* no cropping */
+      object-fit: contain;
       background: #fff;
-      cursor: pointer;       /* indicates click-to-advance */
+      cursor: pointer; /* click to advance */
     }
   </style>
 </head>
 <body>
-  <a class="mail" href="mailto:barendbootsma@gmail.com">Mail</a>
+  <nav class="nav">
+    <a href="mailto:barendbootsma@gmail.com">Mail</a>
+    <a href="cv.html">cv</a>
+  </nav>
 
   <div class="wrap" aria-hidden="true">
     <img id="slide" src="images/1.jpg" alt="">
   </div>
 
   <script>
-    // Use your exact filenames (case-sensitive on GitHub Pages)
     const slides = [
       'images/1.jpg',
       'images/2.jpeg',
@@ -48,7 +48,7 @@
       'images/5.JPG'
     ];
 
-    // Preload to avoid flicker
+    // Preload
     slides.forEach(src => { const im = new Image(); im.src = src; });
 
     const img = document.getElementById('slide');
@@ -59,14 +59,11 @@
       img.src = slides[i]; // instant switch (no fade)
     }
 
-    // Auto-advance every 4 seconds
-    const intervalMs = 4000;
+    const intervalMs = 4000; // 4 seconds
     let timer = setInterval(nextSlide, intervalMs);
 
-    // Click to advance
     img.addEventListener('click', () => {
       nextSlide();
-      // restart the timer so clicks don't immediately auto-advance again
       clearInterval(timer);
       timer = setInterval(nextSlide, intervalMs);
     });
