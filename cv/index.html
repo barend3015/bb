@@ -5,22 +5,23 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Work Experience — CV</title>
   <style>
-    /* Uniform, smaller typography + colors */
     :root{
       --font: Helvetica, Arial, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      --size: 13px;          /* smaller, consistent size */
-      --text: #000;          /* default black */
-      --meta: #777;          /* grey for location & date */
-      --accent: #a38800;     /* role color */
+      --size: 13px;       /* uniform, smaller size */
+      --lh: 1.35;         /* decreased line spacing */
+      --text: #000;       /* black (default) */
+      --meta: #777;       /* grey for location & date */
+      --accent: #a38800;  /* role color */
       --maxw: 980px;
     }
     html,body{margin:0;background:#fff;color:var(--text);}
-    body{font-family:var(--font); font-size:var(--size); line-height:1.55;}
+    body{font-family:var(--font); font-size:var(--size); line-height:var(--lh); font-weight:300;}
 
-    /* Optional tiny links top-left */
+    /* Top-left menu with slightly bigger spacing */
     .nav{
       position: fixed; top: 12px; left: 12px; z-index: 2;
-      font: inherit; display:flex; gap:14px;
+      display: flex; gap: 22px;         /* more spacing between links */
+      font: inherit; font-weight: 300;  /* thin */
     }
     .nav a{ color: var(--text); text-decoration:none; opacity:.85; }
     .nav a:hover{ opacity:1; text-decoration:underline; }
@@ -28,19 +29,29 @@
     /* Page frame */
     .container{ max-width:var(--maxw); margin:48px auto 80px; padding:0 28px; }
 
-    /* Section title: same size as body, just bold */
-    .section-title{ font-weight:700; margin:8px 0 20px; }
+    /* Section title: same size, thin */
+    .section-title{ margin:8px 0 20px; font-weight:300; }
 
     /* Experience blocks */
-    .xp{ margin:0 0 28px; }
-    .company{ font-weight:700; }         /* black by default */
-    .role{ color:var(--accent); font-weight:600; margin-top:2px; }  /* #a38800 */
-    .meta{ color:var(--meta); margin:3px 0 6px; }                   /* grey */
+    .xp{ margin:0 0 22px; }
+    .company{ font-weight:300; }                       /* thin, black */
+    .role{ color:var(--accent); font-weight:300; }     /* thin, #a38800 */
+    .meta{ color:var(--meta); margin:3px 0 6px; }      /* grey line */
 
-    /* Arrow bullets */
+    /* Rightwards arrow bullets */
     .bullets{ list-style:none; margin:6px 0 0 0; padding:0; }
-    .bullets li{ position:relative; padding-left:22px; margin:6px 0; }
-    .bullets li::before{ content:"↳"; position:absolute; left:0; top:0; color:var(--meta); }
+    .bullets li{
+      position:relative;
+      padding-left:22px;
+      margin:4px 0;               /* slightly tighter vertical rhythm */
+      font-weight:300;
+    }
+    .bullets li::before{
+      content:"\2192";             /* → rightwards arrow */
+      position:absolute; left:0; top:0;
+      color: var(--meta);          /* same grey as meta line */
+      transform: translateY(0);    /* keep baseline aligned */
+    }
 
     @media (max-width:560px){
       .container{ padding:0 18px; margin-top:36px; }
@@ -48,7 +59,6 @@
   </style>
 </head>
 <body>
-  <!-- Optional: keep or remove this tiny nav -->
   <nav class="nav">
     <a href="mailto:barendbootsma@gmail.com">Mail</a>
     <a href="./">home</a>
