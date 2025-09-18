@@ -7,13 +7,22 @@
   <style>
     html, body { height: 100%; margin: 0; background: #fff; }
 
-    /* Top centered link */
-    .nav {
-      position: fixed; top: 12px; left: 0; right: 0; z-index: 2;
-      display: flex; justify-content: center;
-      font-family: Helvetica, Arial, sans-serif; font-size: 13px;
+    /* Global font: Helvetica Thin (light weight) */
+    body{
+      font-family: "Helvetica Neue", Helvetica, Arial, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-size: 13px;
+      font-weight: 200;              /* thin */
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
-    .nav a { color: #000; text-decoration: none; opacity: .85; }
+
+    /* Top centered link with a little extra space from the top */
+    .nav {
+      position: fixed; top: 20px; left: 0; right: 0; z-index: 2; /* was 12px */
+      display: flex; justify-content: center;
+      font: inherit;                 /* inherit the thin font */
+    }
+    .nav a { color: #000; text-decoration: none; opacity: .85; font: inherit; }
     .nav a:hover { opacity: 1; text-decoration: underline; }
 
     /* Centered slideshow */
@@ -55,17 +64,3 @@
 
     function nextSlide() {
       i = (i + 1) % slides.length;
-      img.src = slides[i]; // instant switch (no fade)
-    }
-
-    const intervalMs = 5000; // 5 seconds
-    let timer = setInterval(nextSlide, intervalMs);
-
-    img.addEventListener('click', () => {
-      nextSlide();
-      clearInterval(timer);
-      timer = setInterval(nextSlide, intervalMs);
-    });
-  </script>
-</body>
-</html>
