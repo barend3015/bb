@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>cv</title>
+  <title>cv — Barend Bootsma</title>
   <style>
-    html, body { height: 100%; margin: 0; background: #fff; }
+    html, body { height: 100%; margin: 0; background: #fff; color: #000; }
+    /* Tiny top-left links */
     .nav {
       position: fixed; top: 12px; left: 12px;
       font-family: Helvetica, Arial, sans-serif; font-size: 13px;
@@ -13,12 +14,31 @@
     }
     .nav a { color: #000; text-decoration: none; opacity: .85; }
     .nav a:hover { opacity: 1; text-decoration: underline; }
-    .frame {
-      position: fixed; inset: 0; /* full viewport */
+
+    /* Page */
+    .container {
+      box-sizing: border-box;
+      max-width: 980px; margin: 72px auto 64px; padding: 0 20px;
+      font-family: Helvetica, Arial, sans-serif; line-height: 1.5;
     }
-    .frame iframe {
-      width: 100%; height: 100%; border: 0; background: #fff;
+    h1 { margin: 0 0 24px; font-size: 22px; font-weight: 700; letter-spacing: .02em; }
+    .section { margin: 28px 0; }
+    .section h2 {
+      margin: 0 0 12px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
     }
+
+    /* Items */
+    .item { margin: 14px 0 18px; }
+    .item-header { display: flex; flex-wrap: wrap; column-gap: 10px; row-gap: 4px; align-items: baseline; }
+    .company { font-weight: 700; }
+    .role { font-weight: 500; }
+    .date, .place { color: rgba(0,0,0,.5); font-size: 13px; }
+    .bullets { margin: 6px 0 0 20px; }
+    .bullets li { margin: 6px 0; }
+
+    /* Simple two-col layout for Software/Languages on wide screens */
+    .grid-2 { display: grid; grid-template-columns: 1fr; gap: 18px; }
+    @media (min-width: 720px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
   </style>
 </head>
 <body>
@@ -27,9 +47,191 @@
     <a href="./">home</a>
   </nav>
 
-  <div class="frame" aria-hidden="true">
-    <!-- Put your PDF in the repo root as cv.pdf -->
-    <iframe src="cv.pdf#view=FitH"></iframe>
-  </div>
+  <main class="container">
+    <h1>Curriculum Vitae</h1>
+
+    <section class="section">
+      <h2>Work Experience</h2>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="company">From the Underground</span>
+          <span class="role">Sculpture</span>
+          <span class="place">Rotterdam, NL</span>
+          <span class="date">02.2025 – 02.2024</span>
+        </div>
+        <ul class="bullets">
+          <li>Sculpting mycelium statues.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="company">SIGN Living Lab</span>
+          <span class="role">Exhibition Designer</span>
+          <span class="place">Rotterdam, NL</span>
+          <span class="date">02.2025 – 02.2024</span>
+        </div>
+        <ul class="bullets">
+          <li>Designing the exhibition “Closing Biomaterial Loops”, from idea to concept and final production.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="company">De Groene Afslag &amp; Auping</span>
+          <span class="role">Product &amp; Interior Designer</span>
+          <span class="place">Rotterdam, NL</span>
+          <span class="date">02.2025 – 02.2024</span>
+        </div>
+        <ul class="bullets">
+          <li>Designing an exhibition within a hotel room that proposes waste as an illusion, inviting guests to live with nature and see it as a collaborator.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="company">ASML</span>
+          <span class="role">Industrial Design Engineer — Master Graduation Project</span>
+          <span class="place">Veldhoven, NL</span>
+          <span class="date">02.2025 – 02.2024</span>
+        </div>
+        <ul class="bullets">
+          <li>Design of the operator–machine interaction of EUV lithography systems.</li>
+          <li>Thesis project for MSc Integrated Product Design (TU Delft); graded 8.5.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="company">Slimdesign (Industrial Design Agency)</span>
+          <span class="role">Industrial Design Engineer</span>
+          <span class="place">Amsterdam, NL</span>
+          <span class="date">02.2025 – 02.2024</span>
+        </div>
+        <ul class="bullets">
+          <li>Designing connected consumer electronics from concept to final product.</li>
+          <li>Promoted to design engineer after a successful internship.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="company">First-Case (Data Center Design)</span>
+          <span class="role">Construction Design Engineer</span>
+          <span class="place">Wateringen, NL</span>
+          <span class="date">02.2025 – Present</span>
+        </div>
+        <ul class="bullets">
+          <li>Developed a parametric 3D model to automate the drawing process of data center constructions.</li>
+          <li>Translating customer requirements into designs while aligning with the manufacturing partner.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="company">Food Concept Business</span>
+          <span class="role">Founder</span>
+          <span class="place">Rotterdam, NL</span>
+          <span class="date">01.2022 – 01.2025</span>
+        </div>
+        <ul class="bullets">
+          <li>Serving passion fruit recipes at festivals; eaten straight from the peel.</li>
+          <li>Seen at Lowlands, Down the Rabbit Hole, ZeeZout, and more.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="company">Pon Holdings</span>
+          <span class="role">Concept Designer</span>
+          <span class="place">Almere, NL</span>
+          <span class="date">02.2025 – 02.2024</span>
+        </div>
+        <ul class="bullets">
+          <li>Concept for maximizing benefits of solar investments amid local grid congestion.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="company">Orbie</span>
+          <span class="role">Product Developer &amp; Team Leader</span>
+          <span class="place">Amsterdam, NL</span>
+          <span class="date">02.2025 – 02.2024</span>
+        </div>
+        <ul class="bullets">
+          <li>Led a small design team developing innovative wrist protection.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Education</h2>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="company">Delft University of Technology</span>
+          <span class="role">Master — Integrated Product Design</span>
+          <span class="place">Delft, NL</span>
+          <span class="date">2023 – 2024</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="company">Delft University of Technology</span>
+          <span class="role">Bachelor — Industrial Design Engineering</span>
+          <span class="place">Delft, NL</span>
+          <span class="date">2023 – 2024</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="company">Strate, École de Design</span>
+          <span class="role">Product Design</span>
+          <span class="place">Paris, France</span>
+          <span class="date">2023 – 2024</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="company">Rijnlands Lyceum</span>
+          <span class="role">Pre-university, Science &amp; Engineering (VWO)</span>
+          <span class="place">Oegstgeest, NL</span>
+          <span class="date">2023 – 2024</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="company">Collège Marie Bartette</span>
+          <span class="role">French High School</span>
+          <span class="place">Arcachon, France</span>
+          <span class="date">2023 – 2024</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section grid-2">
+      <div>
+        <h2>Software</h2>
+        <div class="item">
+          <div><strong>3D:</strong> Solidworks, Blender, Fusion, Rhino, Grasshopper, Keyshot, AutoCAD, SketchUp, 3D printing, CLO 3D</div>
+          <div style="margin-top:8px;"><strong>2D:</strong> Adobe Illustrator, Photoshop, InDesign, Lightroom, Premiere Pro, Figma</div>
+        </div>
+      </div>
+      <div>
+        <h2>Languages</h2>
+        <div class="item">
+          <div><strong>Dutch:</strong> Native speaker</div>
+          <div><strong>English:</strong> Proficient</div>
+          <div><strong>French:</strong> Proficient</div>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
