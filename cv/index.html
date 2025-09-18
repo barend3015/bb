@@ -7,50 +7,55 @@
   <style>
     :root{
       --font: Helvetica, Arial, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      --size: 13px;       /* uniform, smaller size */
-      --lh: 1.35;         /* decreased line spacing */
-      --text: #000;       /* black (default) */
-      --meta: #777;       /* grey for location & date */
-      --accent: #a38800;  /* role color */
+      --size: 13px;        /* ONE size everywhere */
+      --lh: 1.35;          /* ONE line-height everywhere */
+      --text: #000;        /* black */
+      --meta: #777;        /* grey for location/date & arrow */
+      --accent: #a38800;   /* role color */
       --maxw: 980px;
     }
-    html,body{margin:0;background:#fff;color:var(--text);}
-    body{font-family:var(--font); font-size:var(--size); line-height:var(--lh); font-weight:300;}
+
+    /* Global reset so every element inherits the same font + spacing */
+    * { box-sizing: border-box; }
+    html, body { margin:0; background:#fff; color:var(--text); }
+    body { font: 300 var(--size)/var(--lh) var(--font); }
+
+    /* Make ALL text elements inherit (size + line-height + weight) */
+    h1,h2,h3,h4,h5,h6,p,ul,ol,li,div,span,a,nav,section {
+      font: inherit; color: inherit; line-height: inherit;
+    }
 
     /* Top-left menu with slightly bigger spacing */
     .nav{
       position: fixed; top: 12px; left: 12px; z-index: 2;
-      display: flex; gap: 22px;         /* more spacing between links */
-      font: inherit; font-weight: 300;  /* thin */
+      display: flex; gap: 22px;
     }
-    .nav a{ color: var(--text); text-decoration:none; opacity:.85; }
-    .nav a:hover{ opacity:1; text-decoration:underline; }
+    .nav a{ text-decoration: none; opacity:.85; }
+    .nav a:hover{ opacity:1; text-decoration: underline; }
 
     /* Page frame */
-    .container{ max-width:var(--maxw); margin:48px auto 80px; padding:0 28px; }
+    .container{ max-width: var(--maxw); margin:48px auto 80px; padding:0 28px; }
 
-    /* Section title: same size, thin */
-    .section-title{ margin:8px 0 20px; font-weight:300; }
+    /* Section title: same size, just thin/boldness unchanged */
+    .section-title{ margin:8px 0 20px; }
 
     /* Experience blocks */
     .xp{ margin:0 0 22px; }
-    .company{ font-weight:300; }                       /* thin, black */
-    .role{ color:var(--accent); font-weight:300; }     /* thin, #a38800 */
-    .meta{ color:var(--meta); margin:3px 0 6px; }      /* grey line */
+    .company{ }                                     /* black by default */
+    .role{ color: var(--accent); }                  /* #a38800 */
+    .meta{ color: var(--meta); margin:3px 0 6px; }  /* grey */
 
-    /* Rightwards arrow bullets */
-    .bullets{ list-style:none; margin:6px 0 0 0; padding:0; }
+    /* Arrow bullets (↳) matching your example component */
+    .bullets{ list-style: none; margin:6px 0 0 0; padding:0; }
     .bullets li{
-      position:relative;
-      padding-left:22px;
-      margin:4px 0;               /* slightly tighter vertical rhythm */
-      font-weight:300;
+      position: relative;
+      padding-left: 22px;
+      margin: 4px 0;
     }
     .bullets li::before{
-      content:"\2192";             /* → rightwards arrow */
-      position:absolute; left:0; top:0;
-      color: var(--meta);          /* same grey as meta line */
-      transform: translateY(0);    /* keep baseline aligned */
+      content: "↳";
+      position: absolute; left: 0; top: 0;
+      color: var(--meta);
     }
 
     @media (max-width:560px){
@@ -103,46 +108,4 @@
       <div class="role">Industrial Design Engineer</div>
       <div class="meta">Amsterdam, NL | 02.2025 - 02.2024</div>
       <ul class="bullets">
-        <li>Designing connected consumer electronics. Involved in the entire development process, from concept creation to final product delivery.</li>
-        <li>Promoted to design engineer after a successful internship.</li>
-      </ul>
-    </section>
-
-    <section class="xp">
-      <div class="company">First-Case, Data Center Design</div>
-      <div class="role">Construction Design Engineer</div>
-      <div class="meta">Wateringen, NL | 02.2025 - Present</div>
-      <ul class="bullets">
-        <li>Developed a parametric 3D model to automate the drawing process of data center constructions.</li>
-        <li>Translating customer requirements into the designs of data center constructions, while ensuring alignment with the manufacturing partner.</li>
-      </ul>
-    </section>
-
-    <section class="xp">
-      <div class="company">Food Concept Business</div>
-      <div class="role">Founder</div>
-      <div class="meta">Rotterdam, NL | 01.2022 - 01.2025</div>
-      <ul class="bullets">
-        <li>Serving passion fruit recipes on big music festivals that can be slurped from the peel.</li>
-        <li>To be found at music festivals such as Lowlands, Down the Rabbit Hole, ZeeZout and more.</li>
-      </ul>
-    </section>
-
-    <section class="xp">
-      <div class="company">Pon Holdings</div>
-      <div class="role">Concept Designer</div>
-      <div class="meta">Almere, NL | 02.2025 - 02.2024</div>
-      <ul class="bullets">
-        <li>Developed a conceptual product, designed to aid businesses in maximizing the benefits of their solar panel investments, while dealing with local grid congestion.</li>
-      </ul>
-    </section>
-
-    <section class="xp">
-      <div class="company">Orbie</div>
-      <div class="role">Product Developer and Team Leader</div>
-      <div class="meta">Amsterdam, NL | 02.2025 - 02.2024</div>
-      <ul class="bullets"><li>Leading a small design team developing innovative wrist protection.</li></ul>
-    </section>
-  </main>
-</body>
-</html>
+        <li>Designing connected consumer electronics. Involved in the entire development process, from concept creation to final
