@@ -5,37 +5,55 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title></title>
   <style>
+    /* Full-page white background + perfect centering */
     html, body { height: 100%; margin: 0; background: #fff; }
-    .frame { position: fixed; inset: 0; overflow: hidden; background: #fff; }
-    .frame img {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: contain; /* show full image, white letterbox if needed */
-      opacity: 0; transition: opacity .6s ease;
-      background: #fff;
+    .wrap { min-height: 100%; display: grid; place-items: center; background: #fff; }
+
+    /* The image itself: constrained so it never fills the whole screen */
+    #slide {
+      display: block;
+      max-width: min(90vw, 1000px);   /* make it smaller than the screen */
+      max-height: min(80vh, 750px);   /* keep some white space around */
+      width: auto;
+      height: auto;
+      object-fit: contain;            /* no cropping */
+      transition: opacity .5s ease;   /* fade animation */
+      opacity: 1;
+      background: #fff;               /* white behind letterboxing */
     }
-    .frame img.show { opacity: 1; }
+    #slide.hidden { opacity: 0; }
   </style>
 </head>
 <body>
-  <div class="frame" aria-hidden="true">
-    <!-- Add/remove <img> lines to match your files; keep alt empty for decorative images -->
-    <img src="images/1.jpg" alt="">
-    <img src="images/2.jpg" alt="">
-    <img src="images/3.jpg" alt="">
+  <div class="wrap" aria-hidden="true">
+    <img id="slide" src="images/1.jpg" alt="">
   </div>
 
   <script>
-    (function () {
-      const slides = Array.from(document.querySelectorAll('.frame img'));
-      if (!slides.length) return;
-      let i = 0, delay = 3000; // change delay (ms) if you want
-      slides[0].classList.add('show');
-      setInterval(() => {
-        slides[i].classList.remove('show');
+    // Use your exact filenames (case-sensitive on GitHub Pages!)
+    const slides = [
+      'images/1.jpg',
+      'images/2.jpeg',
+      'images/3.JPG',
+      'images/4.jpeg',
+      'images/5.JPG'
+    ];
+
+    const img = document.getElementById('slide');
+    const delay = 3000; // ms between slides
+
+    // Preload to avoid flicker
+    slides.forEach(src => { const im = new Image(); im.src = src; });
+
+    let i = 0;
+    setInterval(() => {
+      img.classList.add('hidden');
+      setTimeout(() => {
         i = (i + 1) % slides.length;
-        slides[i].classList.add('show');
-      }, delay);
-    })();
+        img.src = slides[i];
+        img.classList.remove('hidden');
+      }, 250); // fade-out time
+    }, delay);
   </script>
 </body>
 </html>
